@@ -1,8 +1,12 @@
 package basic_struts.register.action;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 import basic_struts.register.model.Person;
+import basic_struts.register.model.State;
 
 public class Register extends ActionSupport {
 	/**
@@ -37,5 +41,28 @@ public class Register extends ActionSupport {
 		if (personBean.getAge() < 18) {
 			addFieldError("personBean.age", "Age is required and must be 18 or older");
 		}
+	}
+
+	public String[] getSports() {
+		return getText("sports").split(",");
+	}
+
+	public String[] getGenders() {
+		return getText("genders").split(",");
+	}
+
+	public List<State> getStates() {
+		List<State> states = new ArrayList<State>();
+		states.add(new State("皖", "安徽"));
+		states.add(new State("苏", "江苏"));
+		states.add(new State("浙", "浙江"));
+		states.add(new State("沪", "上海"));
+		states.add(new State("赣", "江西"));
+		states.add(new State("粤", "广东"));
+		return states;
+	}
+	
+	public String[] getCarModelsAvailable(){
+		return getText("carmodels").split(",");
 	}
 }

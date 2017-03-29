@@ -71,6 +71,10 @@
 		</s:url>
 		<a href="${debugLink}">Debugging Interceptor</a>
 	</p>
+	<P>
+		
+		<a href="<s:url action='editperson'/>">Edit person</a>
+	</p>
 	<hr />
 	<s:text name="contact" />
 </body>

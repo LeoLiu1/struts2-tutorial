@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE struts PUBLIC
-    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
-    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
 
@@ -25,8 +25,7 @@
 		</global-results>
 
 		<global-exception-mappings>
-			<exception-mapping
-				exception="basic_struts.exceptions.SecurityBreachException"
+			<exception-mapping exception="basic_struts.exceptions.SecurityBreachException"
 				result="securityerror" />
 			<exception-mapping exception="java.lang.Exception"
 				result="error" />
@@ -50,8 +49,7 @@
 		</action>
 		<action name="securitybreachexception" class="basic_struts.exceptions.action.ExceptionAction"
 			method="throwSecurityException">
-			<exception-mapping
-				exception="basic_struts.exceptions.SecurityBreachException"
+			<exception-mapping exception="basic_struts.exceptions.SecurityBreachException"
 				result="login" />
 			<result>/register.jsp</result>
 			<result name="login">/login.jsp</result>
