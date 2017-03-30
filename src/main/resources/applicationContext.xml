@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="personService" class="basic_struts.register.service.PersonServiceImp" scope="prototype"/>
+	<bean id="regAction" class="basic_struts.register.action.Register" scope="prototype">
+		<property name="personService" ref="personService" />
+	</bean>
+	<bean id="regInput" class="basic_struts.register.action.Register" scope="prototype">
+		<property name="personService" ref="personService" />
+	</bean>
+	<bean id="helloAction" class="basic_struts.helloworld.action.HelloWorldAction" scope="prototype"/>
+	<bean id="secBreachAction" class="basic_struts.exceptions.action.ExceptionAction" scope="prototype"/>
+	<bean id="secBreachGlobal" class="basic_struts.exceptions.action.ExceptionAction" scope="prototype"/>
+	<bean id="exceptionGlobal" class="basic_struts.exceptions.action.ExceptionAction" scope="prototype"/>
+
+</beans>

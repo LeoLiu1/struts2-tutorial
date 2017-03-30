@@ -7,10 +7,13 @@
 
 	<constant name="struts.devMode" value="true" />
 	<constant name="struts.custom.i18n.resources" value="global" />
-
-	<package name="basicstruts2" extends="struts-default">
+	<!-- <constant name="struts.objectFactory" value="spring" /> -->
+	<constant name="struts.ui.theme" value="xhtml" />
+	<package name="basicstruts" extends="struts-default">
 		<interceptors>
 			<interceptor-stack name="appDefaultStack">
+				<interceptor-ref name="timer" />
+				<interceptor-ref name="logger" />
 				<interceptor-ref name="defaultStack">
 					<param name="exception.logEnabled">true</param>
 					<param name="exception.logLevel">ERROR</param>
@@ -34,32 +37,29 @@
 		<action name="index">
 			<result>/index.jsp</result>
 		</action>
-		<action name="hello" class="basic_struts.helloworld.action.HelloWorldAction"
-			method="execute">
+		<action name="hello" class="helloAction" method="execute">
 			<result name="success">/HelloWorld.jsp</result>
 		</action>
-		<action name="register" class="basic_struts.register.action.Register"
-			method="execute">
+		<action name="*register" class="regAction" method="{1}">
 			<result name="success">/thankyou.jsp</result>
 			<result name="input">/register.jsp</result>
+			<allowed-methods>update</allowed-methods>
 		</action>
-		<action name="registerInput" class="basic_struts.register.action.Register"
-			method="input">
+		<action name="registerInput" class="regInput" method="input">
 			<result name="input">/register.jsp</result>
 		</action>
-		<action name="securitybreachexception" class="basic_struts.exceptions.action.ExceptionAction"
+		<action name="securitybreachexception" class="secBreachAction"
 			method="throwSecurityException">
 			<exception-mapping exception="basic_struts.exceptions.SecurityBreachException"
 				result="login" />
 			<result>/register.jsp</result>
 			<result name="login">/login.jsp</result>
 		</action>
-		<action name="securitybreachexceptionglobal" class="basic_struts.exceptions.action.ExceptionAction"
+		<action name="securitybreachexceptionglobal" class="secBreachGlobal"
 			method="throwSecurityException">
 			<result>/register.jsp</result>
 		</action>
-		<action name="exceptionglobal" class="basic_struts.exceptions.action.ExceptionAction"
-			method="throwAnyException">
+		<action name="exceptionglobal" class="exceptionGlobal" method="throwAnyException">
 			<result>/register.jsp</result>
 		</action>
 	</package>

@@ -5,6 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<s:head />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Register</title>
 <s:head />
@@ -21,7 +22,8 @@
 		<s:textfield key="personBean.age" />
 		<s:checkbox key="personBean.over21" />
 		<s:select key="personBean.sport" list="sports" />
-		<s:select key="personBean.residency" list="states" listKey="stateAbbr" listValue="stateName" />
+		<s:select key="personBean.residency" list="states" listKey="stateAbbr"
+			listValue="stateName" />
 		<s:checkboxlist key="personBean.carModels" list="carModelsAvailable" />
 		<s:submit />
 	</s:form>

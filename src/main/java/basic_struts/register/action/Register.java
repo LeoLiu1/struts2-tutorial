@@ -7,6 +7,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import basic_struts.register.model.Person;
 import basic_struts.register.model.State;
+import basic_struts.register.service.PersonService;
 
 public class Register extends ActionSupport {
 	/**
@@ -14,10 +15,22 @@ public class Register extends ActionSupport {
 	 */
 	private static final long serialVersionUID = 3594979221827708298L;
 	private Person personBean;
+	private PersonService personService;
 
 	@Override
 	public String execute() throws Exception {
 		// call Service class to store personBean's state in database
+		personService.savePerson(personBean);
+		return SUCCESS;
+	}
+
+	@Override
+	public String input() throws Exception {
+		setPersonBean(personService.getPerson());
+		return INPUT;
+	}
+
+	public String update() {
 		return SUCCESS;
 	}
 
@@ -61,8 +74,16 @@ public class Register extends ActionSupport {
 		states.add(new State("ÔÁ", "¹ã¶«"));
 		return states;
 	}
-	
-	public String[] getCarModelsAvailable(){
+
+	public String[] getCarModelsAvailable() {
 		return getText("carmodels").split(",");
+	}
+
+	public PersonService getPersonService() {
+		return personService;
+	}
+
+	public void setPersonService(PersonService personService) {
+		this.personService = personService;
 	}
 }

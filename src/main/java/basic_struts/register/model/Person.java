@@ -21,7 +21,7 @@ public class Person {
 	}
 
 	public String getResidency() {
-		return residency;
+		return this.residency;
 	}
 
 	public void setResidency(String residency) {
