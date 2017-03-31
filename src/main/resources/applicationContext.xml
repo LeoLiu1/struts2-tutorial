@@ -6,11 +6,14 @@
             http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean id="personService" class="basic_struts.register.service.PersonServiceImp" scope="prototype"/>
+	<bean id="stateService" class="basic_struts.register.service.StateServiceImp" scope="prototype"/>
 	<bean id="regAction" class="basic_struts.register.action.Register" scope="prototype">
 		<property name="personService" ref="personService" />
+		<property name="stateService" ref="stateService" />
 	</bean>
 	<bean id="regInput" class="basic_struts.register.action.Register" scope="prototype">
 		<property name="personService" ref="personService" />
+		<property name="stateService" ref="stateService" />
 	</bean>
 	<bean id="helloAction" class="basic_struts.helloworld.action.HelloWorldAction" scope="prototype"/>
 	<bean id="secBreachAction" class="basic_struts.exceptions.action.ExceptionAction" scope="prototype"/>

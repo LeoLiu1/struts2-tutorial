@@ -25,7 +25,7 @@
 		<s:select key="personBean.residency" list="states" listKey="stateAbbr"
 			listValue="stateName" />
 		<s:checkboxlist key="personBean.carModels" list="carModelsAvailable" />
-		<s:submit />
+		<s:submit key="submit"/>
 	</s:form>
 </body>
 </html>

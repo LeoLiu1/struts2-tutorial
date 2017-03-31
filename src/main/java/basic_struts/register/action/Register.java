@@ -1,24 +1,29 @@
 package basic_struts.register.action;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.Preparable;
+import com.opensymphony.xwork2.interceptor.ParameterNameAware;
 
 import basic_struts.register.model.Person;
 import basic_struts.register.model.State;
 import basic_struts.register.service.PersonService;
+import basic_struts.register.service.StateService;
 
-public class Register extends ActionSupport {
+public class Register extends ActionSupport implements Preparable, ParameterNameAware {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 3594979221827708298L;
 	private Person personBean;
 	private PersonService personService;
+	private StateService stateService;
 
 	@Override
 	public String execute() throws Exception {
+		
+		System.out.println("In execute method...");
 		// call Service class to store personBean's state in database
 		personService.savePerson(personBean);
 		return SUCCESS;
@@ -26,11 +31,26 @@ public class Register extends ActionSupport {
 
 	@Override
 	public String input() throws Exception {
+		System.out.println("In input method...");
 		setPersonBean(personService.getPerson());
 		return INPUT;
 	}
 
+	@Override
+	public void prepare() throws Exception {
+		System.out.println("In prepare method...");
+	}
+
+    public void prepareExecute() {
+    	System.out.println("In prepareExecute method...");
+    }
+
+    public void prepareInput() {
+    	System.out.println("In prepareInput method...");
+    }
+
 	public String update() {
+		System.out.println("In update method...");
 		return SUCCESS;
 	}
 
@@ -43,6 +63,7 @@ public class Register extends ActionSupport {
 	}
 
 	public void validate() {
+		System.out.println("In validate method...");
 		if (personBean.getFirstName().length() == 0) {
 			addFieldError("personBean.firstName", "First name is required.");
 		}
@@ -65,14 +86,7 @@ public class Register extends ActionSupport {
 	}
 
 	public List<State> getStates() {
-		List<State> states = new ArrayList<State>();
-		states.add(new State("皖", "安徽"));
-		states.add(new State("苏", "江苏"));
-		states.add(new State("浙", "浙江"));
-		states.add(new State("沪", "上海"));
-		states.add(new State("赣", "江西"));
-		states.add(new State("粤", "广东"));
-		return states;
+		return stateService.getStates();
 	}
 
 	public String[] getCarModelsAvailable() {
@@ -85,5 +99,23 @@ public class Register extends ActionSupport {
 
 	public void setPersonService(PersonService personService) {
 		this.personService = personService;
+	}
+
+	public StateService getStateService() {
+		return stateService;
+	}
+
+	public void setStateService(StateService stateService) {
+		this.stateService = stateService;
+	}
+
+	@Override
+	public boolean acceptableParameterName(String parameterName) {
+		boolean allowedParameterName = true;
+		if (parameterName.contains("session") || parameterName.contains("request")) {
+			allowedParameterName = false;
+		}
+		System.out.println("parameter " + parameterName);
+		return allowedParameterName;
 	}
 }

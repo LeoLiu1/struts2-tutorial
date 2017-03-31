@@ -11,13 +11,13 @@
 	<constant name="struts.ui.theme" value="xhtml" />
 	<package name="basicstruts" extends="struts-default">
 		<interceptors>
+			<interceptor name="myInterceptor" class="basic_struts.intercept.MyInterceptor" />
 			<interceptor-stack name="appDefaultStack">
 				<interceptor-ref name="timer" />
 				<interceptor-ref name="logger" />
 				<interceptor-ref name="defaultStack">
 					<param name="exception.logEnabled">true</param>
-					<param name="exception.logLevel">ERROR</param>
-					<param name="params.excludeParams">dojo\..*,^struts\..*,^session\..*,^request\..*,^application\..*,^servlet(Request|Response)\..*,parameters\...*</param>
+					<param name="params.excludeParams">dojo\..*,^struts\..*,^session\..*,^request\..*,^application\..*,^servlet(Request|Response)\..*,parameters\...*,submit</param>
 				</interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
@@ -39,6 +39,8 @@
 			<result>/index.jsp</result>
 		</action>
 		<action name="hello" class="helloAction" method="execute">
+			<interceptor-ref name="myInterceptor" />
+			<interceptor-ref name="appDefaultStack" />
 			<result name="success">/HelloWorld.jsp</result>
 		</action>
 		<action name="*register" class="regAction" method="{1}">

@@ -15,7 +15,7 @@ public class HelloWorldAction extends ActionSupport implements SessionAware, Par
 	 */
 	private static final long serialVersionUID = 1952975189091825288L;
 	private static final String HELLO_COUNT = "helloCounts";
-	private MessageStore messageStore;
+	private MessageStore messageStore = new MessageStore();
 	private static int helloCount = 0;
 	private String userName;
 	private Map<String, Object> userSession;
@@ -23,7 +23,6 @@ public class HelloWorldAction extends ActionSupport implements SessionAware, Par
 	public String execute() throws Exception {
 		helloCount++;
 		increaseHelloCounts();
-		messageStore = new MessageStore();
 		if (userName != null) {
 			messageStore.setMessage(messageStore.getMessage() + " " + userName);
 		}
