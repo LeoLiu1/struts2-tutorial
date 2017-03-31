@@ -15,6 +15,7 @@
 	</p>
 	<s:url action="hello" var="helloLink">
 		<s:param name="userName">Bruce Phillips</s:param>
+		<s:param name="session">100</s:param>
 	</s:url>
 
 	<p>

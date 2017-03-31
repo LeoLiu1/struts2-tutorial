@@ -22,6 +22,11 @@
 		times!
 	</p>
 	<p>
+		I've said hello to you
+		<s:property value="#session.helloCounts" />
+		times!
+	</p>
+	<p>
 		<s:property value="messageStore" />
 	</p>
 </body>
