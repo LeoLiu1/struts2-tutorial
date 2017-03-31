@@ -66,12 +66,12 @@ public class Register extends ActionSupport {
 
 	public List<State> getStates() {
 		List<State> states = new ArrayList<State>();
-		states.add(new State("Íî", "°²»Õ"));
-		states.add(new State("ËÕ", "½­ËÕ"));
-		states.add(new State("Õã", "Õã½­"));
-		states.add(new State("»¦", "ÉÏº£"));
-		states.add(new State("¸Ó", "½­Î÷"));
-		states.add(new State("ÔÁ", "¹ã¶«"));
+		states.add(new State("çš–", "å®‰å¾½"));
+		states.add(new State("è‹", "æ±Ÿè‹"));
+		states.add(new State("æµ™", "æµ™æ±Ÿ"));
+		states.add(new State("æ²ª", "ä¸Šæµ·"));
+		states.add(new State("èµ£", "æ±Ÿè¥¿"));
+		states.add(new State("ç²¤", "å¹¿ä¸œ"));
 		return states;
 	}
 

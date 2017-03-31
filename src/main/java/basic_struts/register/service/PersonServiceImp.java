@@ -20,7 +20,7 @@ public class PersonServiceImp implements PersonService {
 		person.setPhoneNumber("111-111-1111");
 		person.setEmail("Bruce.Phillips@outlook.com");
 		person.setAge(33);
-		person.setResidency("»¦");
+		person.setResidency("æ²ª");
 	}
 
 	@Override
